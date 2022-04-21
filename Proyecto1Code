@@ -1,0 +1,122 @@
+Sub punto1()
+
+'definicion de las variables
+
+Dim a, b As Integer             'Variables de la primera funcion
+Dim tipo, d, c, e As Integer    'Variables de la segunda funcion
+Dim g, h, i, f As Integer       'Variables de la tercera funcion
+Dim lop As Integer              'Variables del ciclo
+Dim respuesta As String         'variable de los botones
+
+b = 1
+f = 0
+lop = 1
+
+'ciclo si el usuario quiere hacer algo mas
+
+Do While (lop = 1)
+
+'eleccion de la funcion
+
+tipo = InputBox("Digite el numero de lo que quiere hacer" & vbCrLf & "1.Contador de primos" & vbCrLf & "2.Clasificador de numeros" & vbCrLf & "3.Una suma")
+
+'Contador de primos
+
+ If tipo = 1 Then
+
+    Cells(ultimafila + b, 2) = ("Lista de primos 1-100")
+
+    For a = 2 To 100
+    
+    If a = 2 Or a = 3 Or a = 5 Or a = 7 Then
+       b = b + 1
+        MsgBox (a & " Es primo")
+       Cells(ultimafila + b, 2) = (a)
+      ElseIf a Mod 2 <> 0 Then
+          If a Mod 3 <> 0 Then
+             If a Mod 5 <> 0 Then
+                 If a Mod 7 <> 0 Then
+                    MsgBox (a & " Es primo")
+                     Cells(ultimafila + b, 2) = (a)
+                   b = b + 1
+                  End If
+               End If
+          End If
+     End If
+    Next
+
+'clasificador de numeros
+
+ ElseIf tipo = 2 Then
+
+
+    d = InputBox("Cuantos numeros quieres clasificar?")
+
+    For c = 1 To d
+
+    e = InputBox("digite un numero")
+    
+    If e <= 0 Then
+        Cells(ultimafila + c, 6) = ("el numero es cero :D")
+    ElseIf e = 1 Then
+        Cells(ultimafila + c, 6) = ("el numero es impar")
+    ElseIf e = 2 Then
+        Cells(ultimafila + c, 6) = ("el numero es par y primo")
+    ElseIf e = 3 Or e = 5 Or e = 7 Then
+        Cells(ultimafila + c, 6) = ("el numero es impar y primo")
+    ElseIf e Mod 2 <> 0 Then
+        If e Mod 3 <> 0 Then
+         If e Mod 5 <> 0 Then
+              If e Mod 7 <> 0 Then
+                   Cells(ultimafila + c, 6) = ("el numero es impar y primo")
+             Else
+                  Cells(ultimafila + c, 6) = ("el numero es impar")
+             End If
+            Else
+              Cells(ultimafila + c, 6) = ("el numero es impar")
+         End If
+      Else
+          Cells(ultimafila + c, 6) = ("el numero es impar")
+     End If
+    Else
+        Cells(ultimafila + c, 6) = ("el numero es impar")
+    End If
+
+    Cells(ultimafila + c, 5) = (e)
+        
+    Next
+    
+'Suma de numeros
+
+ ElseIf tipo = 3 Then
+
+
+    g = InputBox("De cuantos numeros es la suma?")
+
+    For i = 1 To g
+      h = InputBox("digite un numero")
+          Cells(ultimafila + i, 10) = ("numero" & i)
+         Cells(ultimafila + i, 11) = (h)
+     f = f + h
+    Next
+
+    Cells(ultimafila + i, 10) = ("Total")
+    Cells(ultimafila + i, 11) = (f)
+    MsgBox ("su resultado es " & f)
+
+ End If
+ 
+ 'pregunta para continuar el ciclo
+ 
+    respuesta = MsgBox("Quiere intentar algo mas?", vbYesNo)
+        If respuesta = vbYes Then
+            lop = 1
+        Else
+            lop = 0
+        End If
+    
+Loop
+
+End Sub
+
+'kdrr
